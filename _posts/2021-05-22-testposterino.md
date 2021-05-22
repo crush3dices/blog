@@ -1,5 +1,4 @@
 ---
-layout: posts
 title: "Testtitle"
 tags:
   - tag1
