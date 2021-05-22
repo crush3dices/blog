@@ -1,8 +1,8 @@
 ---
 title: "Testtitle"
 tags:
-  - tag1
-  - tags
+  - tag 1
+  - tag 2
 category:
   - test
 ---
