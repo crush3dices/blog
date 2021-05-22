@@ -2,10 +2,10 @@
 layout: posts
 title: "Testtitle"
 tags:
-	-tag1
-	-tags
+  - tag1
+  - tags
 category:
-	-test
+  - test
 ---
 
 # Test
