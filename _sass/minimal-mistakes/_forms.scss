@@ -382,14 +382,13 @@ select:focus {
 }
 
 .collapsible:after {
-  content: "\f107"; 
+  content: "\25BE"; 
   font-size: 18px;
-  font-family: "FontAwesome";
   margin-left: 5px;
 }
 
 .active:after {
-  content: "\f106";
+  content: "\25B4";
 }
 
 .checkboxes label {
@@ -402,4 +401,3 @@ select:focus {
   display: inline-block;
   margin-right:2px;
 }
-
