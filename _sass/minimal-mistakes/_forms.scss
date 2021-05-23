@@ -357,3 +357,49 @@ select:focus {
   left: 50%;
   z-index: 11;
 }
+
+.collapsible {
+  background-color: white;
+  color: #444;
+  cursor: pointer;
+  padding: 8px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+}
+
+.collapsible:hover {
+  text-decoration: underline;
+}
+
+.checkboxes {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.collapsible:after {
+  content: "\f107"; 
+  font-size: 18px;
+  font-family: "FontAwesome";
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\f106";
+}
+
+.checkboxes label {
+  display: inline-block;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+.checkboxes input {
+  vertical-align: middle;
+  display: inline-block;
+  margin-right:2px;
+}
+

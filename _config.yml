@@ -59,7 +59,7 @@ algolia:
   application_id         : I3OUBL1AO1
   index_name             : blog
   search_only_api_key    : fca9e97db345fb93c0903e7d58efb78c
-  powered_by             : flase
+  powered_by             : false
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
@@ -278,3 +278,7 @@ defaults:
       comments: # true
       share: true
       related: true
+
+# footer_scripts: 
+#   - /assets/js/filter.js
+#   - /assets/js/main.min.js

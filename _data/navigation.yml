@@ -1,8 +1,12 @@
 # main links
 main:
-  - title: "CTF's"
+  - title: "CTF-Writeups"
     url: /CTFs/
-  - title: "Windows-Related"
-    url: /Win/
+  - title: "Categories"
+    description: "Posts by Categories"
+    url: /categories/
+  - title: "Posts"
+    description: "Blog-Posts"
+    url: "/posts/"
   - title: "About"
-    url: /about/
+    url: "/about/"

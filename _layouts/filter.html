@@ -1,0 +1,37 @@
+---
+layout: archive
+---
+
+<a class="collapsible">filter posts</a>
+<div class="checkboxes">
+  {% for tag in site.tags %}
+      <label><input type="checkbox" class="tag_cb" name='{{tag[0] | slugify | downcase}}' onchange="update_posts()">{{tag[0] | slugify | downcase}}</label>
+  {% endfor %}
+  <div><a href="javascript:check_all()" style="text-decoration: none; padding: 25px; outline: none; border: none; -moz-outline-style: none;">check all</a><a href="javascript:uncheck_all()" style="text-decoration: none; padding: 25px; border: none; outline: none; -moz-outline-style: none;">uncheck all</a></div>
+</div> 
+
+{{ content }}
+
+{% assign tags_max = 0 %}
+{% for tag in site.tags %}
+  {% if tag[1].size > tags_max %}
+    {% assign tags_max = tag[1].size %}
+  {% endif %}
+{% endfor %}
+
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+{% for i in (1..tags_max) reversed %}
+  {% for tag in site.tags %}
+    {% if tag[1].size == i %}
+      <section id="{{ tag[0] | slugify | downcase }}" class="taxonomy__section">
+        <h2 class="archive__subtitle">{{ tag[0] }}</h2>
+        <div class="entries-{{ entries_layout }}">
+          {% for post in tag.last %}
+            {% include archive-single.html type=entries_layout %}
+          {% endfor %}
+        </div>
+        <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+      </section>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
