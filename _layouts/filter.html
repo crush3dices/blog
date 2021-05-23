@@ -2,7 +2,7 @@
 layout: archive
 ---
 
-<a class="collapsible">Filter by Tags</a>
+<a class="collapsible" style="text-decoration: none;">Filter by Tags</a>
 <div class="checkboxes">
   {% for tag in site.tags %}
       <label><input type="checkbox" class="tag_cb" name='{{tag[0] | slugify | downcase}}' onchange="update_posts()">{{tag[0] | slugify | downcase}}</label>
