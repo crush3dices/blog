@@ -1,0 +1,60 @@
+---
+title: "Tutorials and CTFs"
+layout: single
+permalink: /Tutorials/
+author_profile: true
+excerpt: "Tutorials or series of posts that build upon each other."
+---
+
+<div class="feature__wrapper">
+
+{% for category in site.categories %}
+  {% assign cat_name = category[0] %}
+  {% assign excerpt = nil %}
+  {% assign image = nil %}
+  {% assign image_caption = nil %}
+  {% if site.data.categories[cat_name].excerpt != "" and site.data.categories[cat_name].excerpt != nil %}
+	{% assign excerpt = site.data.categories[cat_name].excerpt %}
+  {% endif %}
+  {% if site.data.categories[cat_name].image != "" and site.data.categories[cat_name].image != nil %}
+	{% assign image = site.data.categories[cat_name].excerpt %}
+  {% endif %}
+  {% if site.data.categories[cat_name].image_caption != "" and site.data.categories[cat_name].image_caption != nil %}
+	{% assign image_caption = site.data.categories[cat_name].excerpt %}
+  {% endif %}
+
+    <div class="feature__item--center">
+      <div class="archive__item">
+        {% if image %}
+          <div class="archive__item-teaser">
+            <img src="{{ image | relative_url }}">
+            {% if image_caption %}
+              <span class="archive__item-caption">{{ image_caption | markdownify | remove: "<p>" | remove: "</p>" }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="archive__item-body">
+          {% if cat_name %}
+          	{% assign url = page.title | slugify %}
+          	{% assign url = url | append: "/" |append: cat_name %}
+          	<h2 class="archive__item-title no_toc">
+            	<a class="archive__item-title" href="{{url | relative_url}}" rel="permalink">{{ cat_name }}</a>
+    		</h2>
+          {% endif %}
+
+          {% if excerpt %}
+            <div class="archive__item-excerpt">
+              {{ excerpt | markdownify }}
+            </div>
+          {% endif %}
+
+          {% if f.url %}
+            <p><a href="{{ f.url | relative_url }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+{% endfor %}
+
+</div>

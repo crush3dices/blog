@@ -1,11 +1,9 @@
 # main links
 main:
-  - title: "CTF-Writeups"
-    url: /CTFs/
-  - title: "Categories"
-    description: "Posts by Categories"
-    url: /categories/
-  - title: "Posts"
+  - title: "Tutorials and CTFs"
+    description: "Series of Posts that build upon each other"
+    url: /Tutorials/
+  - title: "All Posts"
     description: "Blog-Posts"
     url: "/posts/"
   - title: "About"
