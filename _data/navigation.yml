@@ -2,7 +2,7 @@
 main:
   - title: "Tutorials and CTFs"
     description: "Series of Posts that build upon each other"
-    url: /Tutorials/
+    url: /tutorials-and-ctfs/
   - title: "All Posts"
     description: "Blog-Posts"
     url: "/posts/"
