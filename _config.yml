@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "BLOG"
+title                    : "Q-Reous"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Frederick Altrock"
@@ -25,7 +25,7 @@ url                      : # the base hostname & protocol for your site e.g. "ht
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo                     : /assets/images/favicon.png
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
@@ -71,7 +71,7 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : Frederi08878093
 facebook:
   username               :
   app_id                 :
@@ -95,7 +95,7 @@ analytics:
 # Site Author
 author:
   name             : "About me"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/bio-photo.jpg"
   bio              : "I'm a computer-science and math student interested in it-security related content and trying to share my knowledge while i keep learning myself :)"
   location         : "Muenster / Germany"
   email            : crush3dice@gmail.com
@@ -108,13 +108,13 @@ author:
       # url: "https://your-website.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
+      url:  "https://twitter.com/Frederi08878093"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "https://github.com/crush3dices"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
@@ -122,24 +122,24 @@ author:
 # Site Footer
 footer:
   links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:crush3dice@gmail.com"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      # url: "https://your-website.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url:
+      url:  "https://twitter.com/Frederi08878093"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      # url:
+      # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
+      url: "https://github.com/crush3dices"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url:
+      # url: "https://instagram.com/"
 
 
 # Reading Files
@@ -280,4 +280,4 @@ defaults:
 
 # footer_scripts: 
 #   - /assets/js/main.min.js
-#   - /assets/js/filter.js
+#   - /assets/js/detectPhone.js
