@@ -7,7 +7,8 @@ tags:
 showNext: true
 classes: wide
 category: "Writing a Manual Mapper"
-nextPost: "/tutorials-and-ctfs/Writing a Manual Mapper/Windows-Manual-Mapper-Part-2/"
+excerpt: "This post covers knowledge about PE-Format that we need to write a manual dll mapper, which loads a dll into another processes memory."
+nextPost: "/tutorials-and-writeups/writing a manual mapper/windows-manual-mapper-part-2/"
 toc: true
 ---
 # Preface

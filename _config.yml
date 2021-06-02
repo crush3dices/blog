@@ -20,7 +20,7 @@ title                    : "Q-Reous"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Frederick Altrock"
-description              : "Website about stuff i learned and want to share."
+description              : "An it-security and programming related Blog containing Tutorials and CTF-Writeups i found interesting."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -94,7 +94,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "About me"
+  name             : "Frederick Altrock"
   avatar           : "/assets/images/bio-photo.jpg"
   bio              : "I'm a computer-science and math student interested in it-security related content and trying to share my knowledge while i keep learning myself :)"
   location         : "Muenster / Germany"

@@ -1,4 +1,0 @@
-Writing a Manual Mapper:
-  excerpt: "In these posts i want to explain the relevant structures inside the PE-Header to develope a manual mapper which can be used to load a DLL manually. In part 2 i explain how one can actually write such a manual mapper in C++ using the Windows API."
-  image:
-  image_caption:
