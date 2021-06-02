@@ -18,7 +18,7 @@ Since i was not interested in actually cheating but rather how it works i decide
 # DOS-Header
 The beginning of an .exe/.dll-file is similar and consists of DOS-Header. This i kind of ancient and the purpose is that the .exe/.dll-file can run under MS-DOS to print out something like "This program cannot be run in DOS mode.". This MS-DOS program is stored directly after the DOS-Header which has a size of 64Bytes. The only importan property for us (under Windows) is the beginning which should contain "MZ" or "4D 5A" in hex, which identifies it as an executable or dll and the **e_lfanew** field which is the offset inside the file for the "new" File header that Windows uses. We need this pointer since the DOS-program that follows our DOS-Header has variable size. Just so that you get an idea of how the PE-Format roughly looks like. Here is an image I drew:
 
-![The PE-Format](assets/images/PE-Header.png)
+![The PE-Format]({{ site.baseurl}}/assets/images/PE-Header.png)
 
 # NT-Header
 As you might see from the picture the e_lfanew is actually an offset to the PE-Signature which is 4 bytes in size in Windows and preceeds the File Header. If we had loaded our file into a buffer and wanted to access the File Header or Optional Header we would do it like this:
