@@ -166,7 +166,7 @@ The Hint is also an ordinal number. If its present and correct the loader can fi
 Now on disk **OriginalFirstThunk** points to an array with the same content as **FirstThunk** but when the imports got resolved by the loader, the elements of **FirstThunk** will instead contain an **Function** address of the function in memory. This is what we have to do in our manual mapper.
 
 All in one picture:
-![Import Directory Table](/assets/images/IAT.png)
+![Import Directory Table]({{ site.baseurl}}/assets/images/IAT.png)
 
 #### Base Relocation Table
 
@@ -201,7 +201,7 @@ reloc_end = imageNtHeaders->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_B
 {% endhighlight %}
 Again an image speaks more than a thousand words so here is one:
 
-![Relocation Table](/assets/images/Reloc.png){: .fourty-widht}
+![Relocation Table]({{ site.baseurl}}/assets/images/Reloc.png){: .fourty-widht}
 
 
 # Section Table
