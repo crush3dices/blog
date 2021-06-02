@@ -1,5 +1,5 @@
 ---
-title: Writing a manual mapper part 1
+title: Writing a Manual Mapper part 1
 tags:
   - C++
   - Windows
@@ -7,7 +7,7 @@ tags:
 showNext: true
 classes: wide
 category: "Writing a Manual Mapper"
-nextPost: "Writing a Manual Mapper/Windows-Manual-Mapper-Part-2/"
+nextPost: "/tutorials-and-ctfs/Writing a Manual Mapper/Windows-Manual-Mapper-Part-2/"
 toc: true
 ---
 # Preface

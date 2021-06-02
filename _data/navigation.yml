@@ -1,8 +1,8 @@
 # main links
 main:
-  - title: "Tutorials and CTFs"
+  - title: "Tutorials and Writeups"
     description: "Series of Posts that build upon each other"
-    url: /tutorials-and-ctfs/
+    url: /tutorials-and-writeups/
   - title: "All Posts"
     description: "Blog-Posts"
     url: "/posts/"
