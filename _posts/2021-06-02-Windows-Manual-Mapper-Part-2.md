@@ -7,7 +7,7 @@ tags:
 showNext: true
 classes: wide
 category: "Writing a Manual Mapper"
-previousPost: "writing a manual mapper/Windows-Manual-Mapper-Part-1/"
+previousPost: "Writing a Manual Mapper/Windows-Manual-Mapper-Part-1/"
 toc: true
 ---
 # Coming soon
