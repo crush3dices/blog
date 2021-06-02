@@ -1,9 +1,9 @@
 ---
-title: "Tutorials and Writeups"
+title: "Tutorials and CTFs"
 layout: single
-permalink: /tutorials-and-writeups/
+permalink: /tutorials-and-ctfs/
 author_profile: true
-excerpt: "Tutorials and CTF-Writeups of challenges i found cool."
+excerpt: "Tutorials or series of posts that build upon each other."
 classes: wide
 ---
 
@@ -38,7 +38,7 @@ classes: wide
         <div class="archive__item-body">
           {% if cat_name %}
           	{% assign url = page.title | slugify %}
-            {% assign url = cat_name | slugify | prepend: "/" | prepend: url %}
+          	{% assign url = url | append: "/" |append: cat_name %}
           	<h2 class="archive__item-title no_toc">
             	<a class="archive__item-title" href="{{url | relative_url}}" rel="permalink">{{ cat_name }}</a>
     		</h2>
