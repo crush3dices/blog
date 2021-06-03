@@ -16,7 +16,7 @@ toc: true
 What is a manual mapper? A manual mapper is a tool used to manually load a dll into another processes memory without calling the Windows API function LoadLibray(). This tutorial will cover how such a manual mapper works by first explaining the related PE-Format structures and then showing how actually implement this in C++ using the Windows API. If you are interested in the implementation you can skip to the next Part of this series.
 
 # DOS-Header
-The beginning of an .exe/.dll-file is similar and consists of DOS-Header. This i kind of ancient and the purpose is that the .exe/.dll-file can run under MS-DOS to print out something like "This program cannot be run in DOS mode.". This MS-DOS program is stored directly after the DOS-Header which has a size of 64Bytes. The only importan property for us (under Windows) is the beginning which should contain "MZ" or "4D 5A" in hex, which identifies it as an executable or dll and the **e_lfanew** field which is the offset inside the file for the "new" File header that Windows uses. We need this pointer since the DOS-program that follows our DOS-Header has variable size. Just so that you get an idea of how the PE-Format roughly looks like. Here is an image I drew:
+The beginning of an .exe/.dll-file is similar and consists of DOS-Header. This I kind of ancient and the purpose is that the .exe/.dll-file can run under MS-DOS to print out something like "This program cannot be run in DOS mode.". This MS-DOS program is stored directly after the DOS-Header which has a size of 64Bytes. The only importan property for us (under Windows) is the beginning which should contain "MZ" or "4D 5A" in hex, which identifies it as an executable or dll and the **e_lfanew** field which is the offset inside the file for the "new" File header that Windows uses. We need this pointer since the DOS-program that follows our DOS-Header has variable size. Just so that you get an idea of how the PE-Format roughly looks like. Here is an image I drew:
 
 ![The PE-Format]({{ site.baseurl}}/assets/images/PE-Header.png)
 
@@ -49,7 +49,7 @@ typedef struct _IMAGE_FILE_HEADER {
 } IMAGE_FILE_HEADER, *PIMAGE_FILE_HEADER;
 {% endhighlight %}
 
-We only need to worry about **SizeOfOptionalHeader** and **NumberOfSections** here. The **Machine** field could be checked too, it determins weither the image is compiled for x86, x64 or Intel Itanium but if we compile the dll ourselfs this should match anyway. Thus i will ignore it.
+We only need to worry about **SizeOfOptionalHeader** and **NumberOfSections** here. The **Machine** field could be checked too, it determins weither the image is compiled for x86, x64 or Intel Itanium but if we compile the dll ourselfs this should match anyway. Thus I will ignore it.
 
 The **SizeOfOptionalHeader** field is straight forward. It gives the size of the optional header. We need this value because we need to calculate where the optional header ends because thats where **Section_Headers[]** array begins.
 
@@ -94,7 +94,7 @@ typedef struct _IMAGE_OPTIONAL_HEADER {
   IMAGE_DATA_DIRECTORY DataDirectory[IMAGE_NUMBEROF_DIRECTORY_ENTRIES];
 } IMAGE_OPTIONAL_HEADER32, *PIMAGE_OPTIONAL_HEADER32;
 {% endhighlight %}
-...It also contains more fields that are important for our manual mapper. Those are **ImageBase**, **AddressOfEntryPoint**, **SizeOfImage** and **DataDirectory[]**. Again we could also check **Magic** which is "PE32+" for 64bit and "PE32" for 32 bit but again, we wrote the dll we inject so i skip this. The rest shall not interest us here. You can check on the meaning of each field [here](https://docs.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-image_optional_header32).
+...It also contains more fields that are important for our manual mapper. Those are **ImageBase**, **AddressOfEntryPoint**, **SizeOfImage** and **DataDirectory[]**. Again we could also check **Magic** which is "PE32+" for 64bit and "PE32" for 32 bit but again, we wrote the dll we inject so I skip this. The rest shall not interest us here. You can check on the meaning of each field [here](https://docs.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-image_optional_header32).
 
 The **ImageBase** describes the prefered base of the image. This means where the image can be loaded without relocation. What relocation is you might ask. Lets say you have the following code snipped:
 
@@ -154,7 +154,7 @@ typedef struct _IMAGE_THUNK_DATA32 {
 {% endhighlight %}
 The array is terminated with a structure containing only NULL. It is often called the Import Address Table (IAT). Before the IAT is processed by the loader this array contains an ordinal or a RVA to an **IMAGE_IMPORT_BY_NAME** struct for each imported function. An ordinal number simply is an index into the **Export directory table** of the dll. Lets look at the mentioned struct:
 
-Again i could only find a definition in winnt.h:
+Again I could only find a definition in winnt.h:
 {% highlight Java %}
 typedef struct _IMAGE_IMPORT_BY_NAME {
   WORD  Hint;
@@ -180,7 +180,7 @@ typedef struct _IMAGE_BASE_RELOCATION
 {% endhighlight %}
 It is followed by multiple words (2 bytes) that each represent a relocation. I will call them relocation entries. The amount of relocation entries that follow is given by **SizeOfBlock** which gives the bytes these entries occupy. The **Offset** stores a RVA from the image base which is added to each **Offset** in the relocation entries.
 
-Since i couldn't find a structure to represent these relocation entries i wrote one to access the content in a nicer way:
+Since I couldn't find a structure to represent these relocation entries I wrote one to access the content in a nicer way:
 {% highlight Java %}
 typedef struct _RELOCATION_ENTRY
 {
