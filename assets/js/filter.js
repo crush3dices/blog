@@ -36,10 +36,23 @@ function check_all(){
 	$(".tag_cb").each(function(){
 		$(this).prop('checked', true);
 	});
+	update_posts();
 }
 
 function uncheck_all(){
 	$(".tag_cb").each(function(){
 		$(this).prop('checked', false);
 	});
+	update_posts();
 }
+
+$(document).ready(function(){
+  url = decodeURI(window.location.href);
+  content = url.split('?');
+  content = content[1];
+  params = content.split("&");
+  for(tag of params){
+    $('.tag_cb[name="'+tag+'"]').prop('checked', true);
+  }
+  update_posts();
+});
