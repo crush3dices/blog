@@ -13,7 +13,7 @@ toc: true
 ---
 # Preface
 
-What is a manual mapper? A manual mapper is a tool used to manually load a dll into another processes memory without calling the Windows API function LoadLibray(). This tutorial will cover how such a manual mapper works by first explaining the related PE-Format structures and then showing how actually implement this in C++ using the Windows API. If you are interested in the implementation you can skip to the next Part of this series.
+What is a manual mapper? A manual mapper is a tool used to manually load a dll into another processes memory without calling the Windows API function LoadLibray(). This tutorial will cover how such a manual mapper works by first explaining the related PE-Format structures for an x86 machine and then showing how to actually implement this in C++ using the Windows API. If you are interested in the implementation you can skip to the next Part of this series.
 
 # DOS-Header
 The beginning of an .exe/.dll-file is similar and consists of DOS-Header. This I kind of ancient and the purpose is that the .exe/.dll-file can run under MS-DOS to print out something like "This program cannot be run in DOS mode.". This MS-DOS program is stored directly after the DOS-Header which has a size of 64Bytes. The only importan property for us (under Windows) is the beginning which should contain "MZ" or "4D 5A" in hex, which identifies it as an executable or dll and the **e_lfanew** field which is the offset inside the file for the "new" File header that Windows uses. We need this pointer since the DOS-program that follows our DOS-Header has variable size. Just so that you get an idea of how the PE-Format roughly looks like. Here is an image I drew:
@@ -122,7 +122,7 @@ The **VirtualAddress** stores the relative virtual address (RVA) from the image 
 The tables themselves are very different from each other. We will look at the "Import Directory Table" and "Base Relocation Table" because those are relevant to our mapped image. Usually we should be fine with only those two. Anyway a full list can be found [here](https://docs.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-image_data_directory#remarks).
 
 #### Import Directory Table
-The **Import Directory Table** is described by **DataDirectory[1]** and the corresponding VirtualAddress points to the structure **IMAGE_IMPORT_DESCRIPTOR**. Int the winnt.h its defined like:
+The **Import Directory Table** is described by **DataDirectory[1]** and the corresponding VirtualAddress points to an array of structures **IMAGE_IMPORT_DESCRIPTOR** which is terminated by one struct filled with NULL. Int the winnt.h this struct is defined like:
 {% highlight Java %}
 typedef struct _IMAGE_IMPORT_DESCRIPTOR {
 union {
@@ -136,10 +136,10 @@ union {
 } IMAGE_IMPORT_DESCRIPTOR;
 typedef IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;
 {% endhighlight %}
-We are interested in **FirstThunk** and **Name**. But you can check on the other fields [here](https://docs.microsoft.com/en-us/previous-versions/ms809762%28v%3Dmsdn.10%29?redirectedfrom=MSDN#pe-file-imports
+We are interested in **FirstThunk** and **Name**. But you can check on the other fields [here](
 ) if you like. 
 
-The **Name** field holds a RVA to a NULL-terminated ASCII string which contains the dll from which we want to import functions.
+The **Name** field holds a RVA to a NULL-terminated ASCII string which contains the DLL's name from which we want to import functions.
 
 The **FirstThunk** points to an array of the following structure defined in winnt.h (i chose the 32bit version here): 
 {% highlight Java %}
@@ -152,7 +152,7 @@ typedef struct _IMAGE_THUNK_DATA32 {
     } u1;
 } IMAGE_THUNK_DATA32;
 {% endhighlight %}
-The array is terminated with a structure containing only NULL. It is often called the Import Address Table (IAT). Before the IAT is processed by the loader this array contains an ordinal or a RVA to an **IMAGE_IMPORT_BY_NAME** struct for each imported function. An ordinal number simply is an index into the **Export directory table** of the dll. Lets look at the mentioned struct:
+The array is terminated with a structure containing only NULL. It is often called the Import Address Table (IAT). Before the IAT is processed by the loader this array contains an ordinal or a RVA to an **IMAGE_IMPORT_BY_NAME** struct for each imported function. We can determine which is the case by examining the highest bit of this struct (i.e. AddressOfData & 0x80000000). If it is set we have an ordinal number which is simply an index into the **Export directory table** of the dll. Otherwise it points to **IMAGE_IMPORT_BY_NAME**:
 
 Again I could only find a definition in winnt.h:
 {% highlight Java %}
