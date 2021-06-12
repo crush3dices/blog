@@ -1,13 +1,14 @@
 ---
-title: Writing a Manual Mapper part 1
+title: "Tutorial: Writing a Manual Mapper part 1"
 tags:
   - C++
   - Windows
   - Portable Executable
+  - Tutorial
 showNext: true
 classes: wide
 category: "Writing a Manual Mapper"
-excerpt: "This post covers knowledge about PE-Format that we need to write a manual dll mapper, which loads a dll into another processes memory."
+excerpt: "This guide covers knowledge about PE-Format that we need to write a manual dll mapper, which loads a dll into another processes memory. The next guide covers how to actually implement it."
 nextPost: "/tutorials-and-writeups/writing a manual mapper/windows-manual-mapper-part-2/"
 toc: true
 ---
